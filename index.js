@@ -4,6 +4,8 @@ import bodyParser from "body-parser"
 import UserRouter from "./User/userrouter.js"
 import jwt from "jsonwebtoken"
 import PackageRouter from "./package/packagerouter.js"
+import dotenv, { config } from "dotenv"
+dotenv.config()
 
 const app = express()
 
@@ -15,7 +17,7 @@ app.use(
             const Usertoken  = value.replace("Bearer ","")
             jwt.verify(
                 Usertoken,
-                "cabat-2131v",
+                process.env.JWT_CODE,
                 (err,decoded)=>{
                     if(decoded == null){
                         res.status(403).json({
@@ -33,7 +35,7 @@ app.use(
     }
 )
 
-const connectString = "mongodb+srv://dinthi150_db_user:vNMpM9nkUPrUQbhE@cluster0.ksa8tyj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+const connectString = process.env.DATA_BASE_CONNECT_CODE 
 
 mongoose.connect(connectString).then(
     console.log("mongodb data base connected")
@@ -43,8 +45,8 @@ mongoose.connect(connectString).then(
     }
 )
 
-app.use("/users", UserRouter)
-app.use("/package", PackageRouter)
+app.use("/api/users", UserRouter)
+app.use("/api/package", PackageRouter)
 
 app.listen(5000, ()=>{
     console.log("server started")

@@ -1,6 +1,8 @@
 import UserModel from "./usermodel.js"
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken"
+import dotenv from "dotenv"
+dotenv.config()
 
 // This function use (Useres find function)
 export function UserFind (req, res){
@@ -76,7 +78,7 @@ export function Userlogin(req,res){
                             isUserBlocked : user.isUserBlocked, 
                             isEmailVerified : user.isEmailVerified, 
                             profilePic : user.profilePic
-                        },"cabat-2131v"
+                        },process.env.JWT_CODE
                     ) 
                     res.json({
                         token : token,
