@@ -5,11 +5,13 @@ import UserRouter from "./User/userrouter.js"
 import jwt from "jsonwebtoken"
 import PackageRouter from "./package/packagerouter.js"
 import dotenv, { config } from "dotenv"
+import cors from "cors"
 dotenv.config()
 
 const app = express()
 
 app.use(bodyParser.json())
+app.use(cors())
 app.use(
     (req,res,next)=>{
         const value = req.header("Authorization")

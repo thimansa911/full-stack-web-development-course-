@@ -1,22 +1,31 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link , useNavigate } from "react-router-dom";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export default function LoginPage(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
+    const navigate = useNavigate(); 
+ 
     function handleLogin() {
         // Handle login logic here
-        axios.post("http://localhost:5000/api/users/login",{
+        axios.post(import.meta.env.VITE_DB_URL + "/api/users/login",{
             email: email,
             password : password
         }).then((response) => {
             console.log(response.data);
+            localStorage.setItem("token", response.data.token);
+            toast.success("Login Successful"); 
+            if(response.data.role === "admin"){
+                navigate("/admin");
+            }else if(response.data.role === "user"){
+                navigate("/");
+            }
         }).catch((error) => {
             console.log(error);
-        }
-      );
+            toast.error("Login Failed");
+        });
     }
     return(
          <div className="w-full h-screen bg-[url(./loginpic.jpg)] bg-center flex items-center justify-center">

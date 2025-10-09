@@ -4,12 +4,14 @@ import LoginPage from '../pages/login.jsx'
 import RegisterPage from "../pages/register.jsx";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AdminPage from "../pages/admin.jsx";
+import { Toaster } from "react-hot-toast";
 
 function App() {
 
   return (
     <BrowserRouter>
       <div className="w-full h-screen">
+        <Toaster position="top-right" />
         <Routes path="/">
            <Route path="/" element={<HomePage/>}/>
            <Route path="/login" element={<LoginPage/>}/>
