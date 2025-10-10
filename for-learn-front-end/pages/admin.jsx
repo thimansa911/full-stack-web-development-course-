@@ -16,7 +16,7 @@ export default function AdminPage(){
                 <Link className="flex flex-row w-full p-[15px] items-center text-[17px] gap-[15px] my-2 hover:bg-blue-500 hover:-translate-y-1 hover:shadow-md transition duration-200 bg-blue-300" to="/admin/user" ><FaUser className="text-white" />Users</Link>
                 <Link className="flex flex-row w-full p-[15px] items-center text-[17px] gap-[15px] my-2 hover:bg-blue-500 hover:-translate-y-1 hover:shadow-md transition duration-200 bg-blue-300" to="/admin/settings"><IoSettings className="text-white" />Settings</Link>
             </div>
-            <div className="w-[calc(100%-300px)] bg-gray-300 h-full">
+            <div className="w-[calc(100%-300px)] bg-white h-full">
                 <Routes path="/">
                     <Route path="/dashboard" element={<span>Dashboard</span>}/>
                     <Route path="/package" element={<AdminPackagePage/>}/>
