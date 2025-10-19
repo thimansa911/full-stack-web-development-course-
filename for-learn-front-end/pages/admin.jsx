@@ -5,6 +5,7 @@ import { FaUser } from "react-icons/fa";
 import { IoSettings } from "react-icons/io5";
 import AdminPackagePage from "./adminpages/package";
 import AddNewPackage from "./adminpages/addnewpackage";
+import UpdatePackage from "./adminpages/updatepackage";
 
 export default function AdminPage(){
     return(
@@ -24,6 +25,7 @@ export default function AdminPage(){
                     <Route path="/order" element={<h1>Orders</h1>}/>
                     <Route path="/user" element={<h1>Users</h1>}/>
                     <Route path="/settings" element={<h1>Settings</h1>}/>
+                    <Route path="/updatepackage" element={<UpdatePackage/>}/>
                     
                 </Routes>
             </div>

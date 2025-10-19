@@ -129,19 +129,7 @@ export default function AddNewPackage() {
             />
           </div>
 
-          {/* Availability */}
-          <div className="flex flex-col">
-            <label className="text-sm font-semibold text-gray-700 mb-1">Availability</label>
-            <select
-              value={available}
-              onChange={(e) => setAvailable(e.target.value)}
-              className="h-10 px-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-            >
-              <option value="true">Available</option>
-              <option value="false">Not Available</option>
-            </select>
-          </div>
-
+          
           {/* Buttons */}
           <div className="flex justify-between mt-6">
             <Link
