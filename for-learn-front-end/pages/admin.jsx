@@ -3,9 +3,9 @@ import { FaBox } from "react-icons/fa";
 import { LuClipboardPenLine } from "react-icons/lu";
 import { FaUser } from "react-icons/fa";
 import { IoSettings } from "react-icons/io5";
-import AdminPackagePage from "./adminpages/package";
-import AddNewPackage from "./adminpages/addnewpackage";
-import UpdatePackage from "./adminpages/updatepackage";
+import AdminPackagePage from "./adminpages/packagesadmin.jsx";
+import AddNewPackage from "./adminpages/addnewpackage.jsx";
+import UpdatePackage from "./adminpages/updatepackage.jsx";
 
 export default function AdminPage(){
     return(

@@ -121,26 +121,26 @@ export async function AdminUpdatePackage(req, res) {
 }
 
 
-//This function use for get one package info
-export async function getOnePackageInfo (req,res){
-    
-    const packageIdFind = await PackageModel.findOne({ PackageID: req.params.PackageID});
-    try{
-        if(req.user == null){
-            return res.status(403).json({ message : "Please login to get package info"})
+export async function getOnePackageInfo(req, res) {
+    try {
+        // Validate PackageID
+        const { PackageID } = req.params;
+        if (!PackageID) {
+            return res.status(400).json({ message: "PackageID is required" });
         }
 
-        if(req.user.role === "admin"){
-            res.json(packageIdFind);
-        }else{
-            if(!packageIdFind.IsAvailable){
-                res.status(404).json({ message : "package is not available"})
-            }else{
-                res.json(packageIdFind);
-            }
+        // Query database
+        const packageIdFind = await PackageModel.findOne({ PackageID });
+
+        if (!packageIdFind) {
+            return res.status(404).json({ message: "Package not found" });
         }
-    }catch (error) {
-        console.error("Error geting package Info:", error);
-        res.status(500).json({message: "Internal server error while geting package Info"});
+
+        // Optional: Add more role-based logic if needed
+        res.json(packageIdFind);
+
+    } catch (error) {
+        console.error("Error getting package Info:", error.message, error.stack);
+        res.status(500).json({ message: "Internal server error while getting package Info" });
     }
 }
