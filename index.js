@@ -5,6 +5,7 @@ import UserRouter from "./User/userrouter.js"
 import jwt from "jsonwebtoken"
 import PackageRouter from "./package/packagerouter.js"
 import dotenv, { config } from "dotenv"
+import orderRouter from "./order/orderouter.js"
 import cors from "cors"
 dotenv.config()
 
@@ -49,6 +50,7 @@ mongoose.connect(connectString).then(
 
 app.use("/api/users", UserRouter)
 app.use("/api/package", PackageRouter)
+app.use("/api/orders", orderRouter)
 
 app.listen(5000, ()=>{
     console.log("server started")
