@@ -1,64 +1,67 @@
-import mongoose  from "mongoose";
+import mongoose from "mongoose";
 
 const OrderSchema = new mongoose.Schema({
-    OrderID : {
+    OrderID: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
     },
-    email : {
-        type : String,
-        required : true
+    email: {
+        type: String,
+        required: true,
     },
-    name : {
-        type : String,
-        required : true
+    name: {
+        type: String,
+        required: true,
     },
-    address : {
-        type : String,
-        required : true
+    address: {
+        type: String,
+        required: true,
     },
-    phone : {
-        type : String,
-        required : true
+    phone: {
+        type: String,
+        required: true,
     },
-    status : {
-        type : String,
-        required : true,
-        default : "pending"
+    status: {
+        type: String,
+        default: "pending",
     },
-    data : {
-        type : Date,
-        default : Date.now
+    date: { // 🛠 renamed from "data" → correct field name
+        type: Date,
+        default: Date.now,
     },
-    items : [
+    items: [
         {
-            packageID : {
-                type : String,
-                required : true
+            packageID: {
+                type: String,
+                required: true,
             },
-            PackageName : {
-                type : String,
-                required : true
+            PackageName: {
+                type: String,
+                required: true,
             },
-            PackageImage : {
-                type : String,
-                required : true
+            PackageImage: {
+                type: String,
+                required: true,
             },
-            PackagePrice : {
-                type : Number,
-                required : true
+            PackagePrice: {
+                type: Number,
+                required: true,
             },
-            qty : {
-                type : Number,
-                required : true
-            }
-        }
+            quantity: {
+                type: Number,
+                required: true,
+            },
+        },
     ],
-    notes : {
-        type : String, 
-        default : "Write some thing about this"
-    }
+    notes: {
+        type: String,
+        default: "Write something about this",
+    },
+    totalPrice: { // 🧾 optional but useful for quick access
+        type: Number,
+        default: 0,
+    },
 });
 
 const Order = mongoose.model("Order", OrderSchema);
